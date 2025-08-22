@@ -3,4 +3,5 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 
-Route::apiResource('posts', PostController::class);
+Route::post('/posts', [PostController::class, 'store']);
+Route::get('/posts', [PostController::class, 'index']);
