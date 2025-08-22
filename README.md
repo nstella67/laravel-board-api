@@ -17,6 +17,24 @@
   - 페이지네이션
   - 요청 데이터 유효성 검사
   - 공통 JSON 응답 포맷
+ 
+- **프로젝트 구조**
+```
+laravel-board-api/
+├── docker/                                         # Docker 관련 설정
+│   ├── Dockerfile                                  # PHP-FPM + Composer 환경 정의
+│   └── default.conf                                # Nginx 설정파일
+├── src/                                            # Laravel App
+│   ├── app/Http/Controllers                        # 컨트롤러 (PostController, CommentController)
+│   ├── app/Models                                  # 모델 (Post, Comment)
+│   ├── database/migrations                         # 마이그레이션 파일 (테이블 구조 정의)
+│   ├── database/seeders                            # 시더 파일 (더미 데이터 생성)
+│   ├── routes/api.php                              # API 라우트 정의 (posts, comments)
+│   └── ...
+├── docker-compose.yml                              # Docker 서비스 정의 (app, nginx, mysql)
+├── laravel-board-api.postman_collection.json       # Postman Collection
+└── README.md
+```
 
 ---
 
