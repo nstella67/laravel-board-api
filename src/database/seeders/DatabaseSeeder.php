@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
 
         
         // PostSeeder 실행
-        $this->call(PostSeeder::class);
+        $this->call([
+            PostSeeder::class,
+            CommentSeeder::class,
+        ]);
     }
 }

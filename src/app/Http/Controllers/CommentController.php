@@ -33,8 +33,8 @@ class CommentController extends Controller
 
         // 요청에서 per_page 값 가져오기 (없으면 10개)
         $perPage = $request->get('per_page', 10);
-        $comments = $post->comments()->orderBy('created_at', 'desc')->paginate($perPage);
-        
+        $comments = $post->comments()->orderBy('id', 'desc')->paginate($perPage);
+
         return $this->response(true, 'Comment list retrieved successfully', $comments);
     }
 
