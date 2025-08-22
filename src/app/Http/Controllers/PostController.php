@@ -25,19 +25,24 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
+        // $posts = Post::orderBy('created_at', 'desc')->paginate(5); pagination
+
         $perPage = $request->get('per_page', 10); // 없으면 기본 10
         $posts = Post::orderBy('created_at', 'desc')->paginate($perPage);
-        // $posts = Post::orderBy('created_at', 'desc')->paginate(5);
 
-        return $this->response(true, 'Post list retrieved successfully', [
-            'items' => $posts->items(),
-            'pagination' => [
-                'current_page' => $posts->currentPage(),
-                'last_page' => $posts->lastPage(),
-                'per_page' => $posts->perPage(),
-                'total' => $posts->total(),
-            ]
-        ]);
+        return $this->response(true, 'Post list retrieved successfully', $posts);
+        /** pagination시 필요한 meta만 적용할 경우
+         * return $this->response(true, 'Post list retrieved successfully', [
+         *    'items' => $posts->items(),
+         *    'pagination' => [
+         *        'current_page' => $posts->currentPage(),
+         *        'last_page' => $posts->lastPage(),
+         *        'per_page' => $posts->perPage(),
+         *        'total' => $posts->total(),
+         *    ]
+         *]);
+         * 
+         */
     }
 
     /**

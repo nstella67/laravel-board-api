@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('post_id')->constrained('posts')->onDelete('cascade'); // 게시글 삭제 시 댓글도 삭제
+            $table->string('author', 100);
+            $table->text('content');
             $table->timestamps();
         });
     }
