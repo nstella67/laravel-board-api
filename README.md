@@ -95,6 +95,30 @@ docker exec -it laravel_app php artisan migrate --seed
 
 `laravel-board-api.postman_collection.json` 파일을 Postman에 Import 하여 API 테스트가 가능합니다.  
 총 9개의 요청이 포함되어 있습니다.  
+ 
+### 테스트 예시 
+#### 1) 게시글 생성
+- **Method**: `POST`
+- **URL**: `/posts`
+- **Headers**: `Content-Type: application/json`
+- **Body (raw → JSON 선택)**:
+`{
+  "title": "테스트 글 1",
+  "content": "본문입니다",
+  "author": "작성자"
+}`
+<img width="1470" height="535" alt="image" src="https://github.com/user-attachments/assets/b6ff6a38-26de-4574-bf2b-97b6f141cf1b" />
+
+#### 2) 게시글 목록
+- **Method**: `GET`
+- **URL**: `/posts`
+- **Query Params (선택적)**:
+  - `page=2` → 특정 페이지 조회
+  - `per_page=5` → 페이지당 5개씩 조회, 기본 10
+- **URL 예시**:
+  - 페이지네이션 5개씩, 2페이지 목록 : `GET http://localhost:8000/api/posts?page=2&per_page=5`
+  - 페이지네이션 기본(10개씩), 1페이지 목록 : `GET http://localhost:8000/api/posts?page=1`
+  - 페이지네이션 기본(10개씩) 1페이지 목록 : `GET http://localhost:8000/api/posts`
 
 ---
 
